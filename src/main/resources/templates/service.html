@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- META SECTION -->
+<title>Spring Framework Guru JdbcTemplate, Thymeleaf, JPA Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- END META SECTION -->
+<!--  BEGIN STYLE -->
+<style>
+table, th, td {
+    border: 1px solid black;
+    padding: 1px;
+}
+</style>
+<!--  END STYLE -->
+
+</head>
+<body>
+		<div>
+			<h2>Demo for service subscription</h2>
+			<div th:if="${username!=null}" th:text="${username}"></div>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Url</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="services : ${services}">
+						<td th:text="${services.id}">Text ...</td>
+						<td th:text="${services.name}">Text ...</td>
+						<td th:text="${services.url}">Text ...</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<div>
+	<h3>Subscribe service for user</h3>
+	<form action="#" th:action="@{/servicehub/service}" method="post">
+	<label>User Name<input type="text" name="username" id="username"></input></label>
+	<label>Service Name<select name="servicename">
+		<option value="search">search</option>
+		<option value="lcache">lcache</option>
+		<option value="dcache">dcache</option>
+		<option value="risk">risk</option>
+	</select></label>
+	<input type="submit" value="Submit"></input>
+	</form>
+	</div>
+	<div>
+	<h3>Remove subscribed service for user</h3>
+	<form action="/delete" th:action="@{/servicehub/service/delete}" method="post">
+	<label>User Name<input type="text" name="username" id="username"></input></label>
+	<label>Service Name<select name="servicename">
+		<option value="search">search</option>
+		<option value="lcache">lcache</option>
+		<option value="dcache">dcache</option>
+		<option value="risk">risk</option>
+	</select></label>
+	<input type="submit" value="Submit"></input>
+	</form>
+	</div>
+</body>
+</html>
